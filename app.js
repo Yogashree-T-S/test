@@ -7,15 +7,20 @@ noteCreation.addEventListener('click',(e)=>{
     e.preventDefault();
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    objData[title.value]={title:title.value, notes:notes.value ,created:"00:00:00"}
-    if(noteCreation.innerText==="Create new notes"){
+    objData[title.value]={title:title.value, notes:notes.value ,created:"00:00:00",updated:"00:00:00"}
+    console.log(noteCreation.innerText)
+    if(noteCreation.innerText==="create new notes"){
         console.log(time,objData[title.value]['created'])
+        objData[title.value]['created']=time;
+    }
+    else{
+        objData[title.value]['updated']=time;
     }
     title.value=""
     notes.value=""
     console.log(objData);
     showTask();
-    noteCreation.innerText="Create new notes";
+    noteCreation.innerText="create new notes";
 })
 function showTask(){
     showList.innerHTML="";
@@ -25,7 +30,10 @@ function showTask(){
         showTitle.setAttribute('class','clickTitle');
         let showNotes = document.createElement('p');
         showNotes.setAttribute('class','dispNotes');
-        
+        let created =document.createElement('h2');
+        created.innerText=objData[key].created;
+        let updated =document.createElement('h2');
+        updated.innerText=objData[key].updated;
         showTitle.innerText=objData[key].title;
         showNotes.innerText=objData[key].notes;
         showTitle.addEventListener('click',(e)=>{
@@ -53,6 +61,8 @@ function showTask(){
         showdiv.appendChild(showTitle);
         showdiv.appendChild(close);
         showdiv.appendChild(edit);
+        showdiv.appendChild(created);
+        showdiv.appendChild(updated);
         showdiv.appendChild(showNotes);
         showList.appendChild(showdiv)
     }   
