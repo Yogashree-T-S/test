@@ -1,0 +1,27 @@
+.header{
+    background-color: rgb(207, 199, 188);
+    display:flex;
+    justify-content: space-around;
+}
+.body{
+    display: flex;
+}
+.left{
+    padding:20px;
+    width:fit-content;
+    background-color:antiquewhite ;
+}
+.right{
+    align-items: center;
+    
+}
+#TaskForm{
+    padding:6rem;
+    display:flex;
+    gap:1rem;
+    flex-direction: column;
+}
+
+.dispNotes{
+    display: none;
+}
